@@ -4,7 +4,7 @@ package com.zk.todayinhistory.Bean;
  * Created by zk on 2017/6/27.
  */
 
-public class Event {
+public class HistoryEvent {
 
     private String id;
     private String title;
