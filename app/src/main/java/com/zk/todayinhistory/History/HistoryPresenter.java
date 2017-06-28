@@ -1,14 +1,13 @@
 package com.zk.todayinhistory.History;
 
 import com.blankj.utilcode.util.LogUtils;
-import com.zk.todayinhistory.Bean.HistoryEvent;
+import com.zk.todayinhistory.Bean.HistoryEventResult;
 
 import java.util.Calendar;
-import java.util.List;
 
+import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -20,26 +19,41 @@ public class HistoryPresenter extends HistoryEventContract.Presenter {
     @Override
     public void getHistory(final Calendar calendar) {
         mModule.getHistory(calendar).subscribeOn(Schedulers.io())
-                .doOnSubscribe(new Consumer<Disposable>() {
-                    @Override
-                    public void accept(Disposable disposable) throws Exception {
-                        mView.onRequestStart();
-                    }
-                })
-                .subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<List<HistoryEvent>>() {
+                .subscribe(new Observer<HistoryEventResult>() {
                     @Override
-                    public void accept(List<HistoryEvent> historyEventList) throws Exception {
-                        mView.getHistorySuccess(historyEventList);
+                    public void onSubscribe(Disposable d) {
+                            LogUtils.e("onSubscribe");
                     }
-                }, new Consumer<Throwable>() {
+
                     @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        mView.onInternetError();
-                        mView.onRequestError(throwable.getMessage());
-                        LogUtils.e("出错" + throwable.getMessage());
+                    public void onNext(HistoryEventResult value) {
+                        mView.getHistorySuccess(value);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        LogUtils.e("出错" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
                     }
                 });
+//                .subscribe(new Consumer<HistoryEventResult>() {
+//                    @Override
+//                    public void accept(HistoryEventResult historyEventResult) throws
+//                            Exception {
+//                        mView.getHistorySuccess(historyEventResult);
+//                    }
+//                }, new Consumer<Throwable>() {
+//                    @Override
+//                    public void accept(Throwable throwable) throws Exception {
+//                        mView.onInternetError();
+//                   //     mView.onRequestError(throwable.getMessage());
+//                        LogUtils.e("出错" + throwable.getMessage());
+//                    }
+//                });
     }
 }

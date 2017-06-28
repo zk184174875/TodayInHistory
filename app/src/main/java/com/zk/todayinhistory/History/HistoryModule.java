@@ -1,12 +1,11 @@
 package com.zk.todayinhistory.History;
 
-import com.zk.todayinhistory.Bean.HistoryEvent;
+import com.zk.todayinhistory.Bean.HistoryEventResult;
 import com.zk.todayinhistory.api.NetWorks;
 import com.zk.todayinhistory.global.Constants;
 
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Observable;
@@ -17,7 +16,7 @@ import io.reactivex.Observable;
 
 public class HistoryModule implements HistoryEventContract.Module {
     @Override
-    public Observable<List<HistoryEvent>> getHistory(Calendar calendar) {
+    public Observable<HistoryEventResult> getHistory(Calendar calendar) {
         Map<String, String> map = new HashMap<>();
         map.put("key", Constants.HISTORY_TODAY_APP_KEY);
         map.put("v", "1.0");

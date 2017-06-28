@@ -1,8 +1,7 @@
 package com.zk.todayinhistory.api;
 
-import com.zk.todayinhistory.Bean.HistoryEvent;
+import com.zk.todayinhistory.Bean.HistoryEventResult;
 
-import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Observable;
@@ -15,5 +14,5 @@ import retrofit2.http.QueryMap;
 
 public interface HistoryTodayApi {
     @GET("/japi/toh")
-    Observable<List<HistoryEvent>> getHistoryToday(@QueryMap Map<String,String> map);
+    Observable<HistoryEventResult> getHistoryToday(@QueryMap Map<String,String> map);
 }

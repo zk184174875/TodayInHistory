@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.zk.todayinhistory.Base.BaseActivity;
+import com.zk.todayinhistory.History.HistoryFragment;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -41,6 +42,10 @@ public class MainActivity extends BaseActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        HistoryFragment historyFragment = new HistoryFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.layout_content,
+                historyFragment).show(historyFragment)
+                .commit();
     }
 
     @Override

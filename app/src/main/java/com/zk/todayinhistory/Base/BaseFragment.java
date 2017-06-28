@@ -22,6 +22,7 @@ public abstract class BaseFragment extends Fragment implements BaseFuncImpl{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         View view = inflater.inflate(getContentViewId(),container,false);
         initData();
         initListener();
