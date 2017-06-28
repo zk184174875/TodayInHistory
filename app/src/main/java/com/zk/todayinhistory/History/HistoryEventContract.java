@@ -5,7 +5,7 @@ import com.zk.todayinhistory.Base.mvp.BasePresenter;
 import com.zk.todayinhistory.Base.mvp.BaseView;
 import com.zk.todayinhistory.Bean.HistoryEvent;
 
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -16,7 +16,7 @@ import io.reactivex.Observable;
 
 public interface HistoryEventContract {
     interface Module extends BaseModule {
-        Observable<HistoryEvent> getHistory(Date date);
+        Observable<List<HistoryEvent>> getHistory(Calendar calendar);
     }
 
     interface View extends BaseView {
@@ -24,6 +24,6 @@ public interface HistoryEventContract {
     }
 
     abstract class Presenter extends BasePresenter<Module, View> {
-        public abstract void getHistory(Date date);
+        public abstract void getHistory(Calendar calendar);
     }
 }
