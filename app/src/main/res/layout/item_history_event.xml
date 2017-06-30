@@ -1,25 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="100dp">
 
-    <ImageView
-        android:id="@+id/img"
-        android:layout_width="100dp"
-        android:layout_height="100dp"/>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginRight="5dp"
+                                    android:foreground="?android:attr/selectableItemBackground"
+                                    card_view:cardBackgroundColor="#ffffff"
+                                    card_view:cardCornerRadius="5dp"
+                                    card_view:cardUseCompatPadding="true">
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_toEndOf="@id/img"
-        android:layout_toRightOf="@id/img"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+       >
 
-    <TextView
-        android:id="@+id/tv_lunar_time"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_below="@+id/tv_title"
-        android:layout_toEndOf="@id/img"
-        android:layout_toRightOf="@id/img"/>
-</RelativeLayout>
+        <ImageView
+            android:id="@+id/img"
+            android:padding="2dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_toEndOf="@id/img"
+            android:layout_toRightOf="@id/img"
+            android:gravity="center_vertical|start"/>
+
+        <TextView
+            android:id="@+id/tv_lunar_time"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/tv_title"
+            android:layout_toEndOf="@id/img"
+            android:layout_toRightOf="@id/img"
+            android:gravity="center_vertical|start"/>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

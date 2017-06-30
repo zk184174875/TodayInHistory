@@ -33,12 +33,13 @@ public class HistoryPresenter extends HistoryEventContract.Presenter {
 
                     @Override
                     public void onError(Throwable e) {
+                        mView.onRequestError(e.getMessage());
                         LogUtils.e("出错" + e.getMessage());
                     }
 
                     @Override
                     public void onComplete() {
-
+                        mView.onRequestEnd();
                     }
                 });
 //                .subscribe(new Consumer<HistoryEventResult>() {
