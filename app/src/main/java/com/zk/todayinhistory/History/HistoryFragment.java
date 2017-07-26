@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.blankj.utilcode.util.LogUtils;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zk.todayinhistory.Base.BaseMvpFragment;
 import com.zk.todayinhistory.Bean.HistoryEventResult;
 import com.zk.todayinhistory.R;
@@ -61,7 +62,9 @@ public class HistoryFragment extends BaseMvpFragment<HistoryPresenter,
         recyclerView.setLayoutManager(manager);
         adapter = new HistoryEventAdapter(R.layout.item_history_event, new
                 ArrayList<HistoryEventResult.HistoryEvent>());
+        adapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_RIGHT);
         recyclerView.setAdapter(adapter);
+
     }
 
     @Override
